@@ -8,5 +8,6 @@ namespace Exam2CD
 {
     public class Class1
     {
+
     }
 }
