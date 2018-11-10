@@ -56,13 +56,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\SeleniumHelper.cs" />
+    <Compile Include="PageObject\BasePage.cs" />
+    <Compile Include="PageObject\ClickDimensionsPages\CdHomePage.cs" />
+    <Compile Include="PageObject\ClickDimensionsPages\CdCertificationModelPage.cs" />
+    <Compile Include="PageObject\ClickDimensionsPages\CdCertificationPage.cs" />
+    <Compile Include="PageObject\ClickDimensionsPages\CdFindPartnerPage.cs" />
+    <Compile Include="PageObject\ClickDimensionsPages\CdLearningAndSupportPage.cs" />
+    <Compile Include="PageObject\ClickDimensionsPages\CdTechnologyPage.cs" />
+    <Compile Include="PageObject\ClickDimensionsPages\HeaderSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\ClickDimensionsTests.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-    <Folder Include="PageObject\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
