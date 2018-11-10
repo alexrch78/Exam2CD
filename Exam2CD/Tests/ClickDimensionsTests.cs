@@ -1,4 +1,5 @@
-﻿using Exam2CD.Helpers;
+﻿using Exam2CD.Enums;
+using Exam2CD.Helpers;
 using Exam2CD.PageObject.ClickDimensionsPages;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -18,6 +19,11 @@ namespace Exam2CD.Tests
         private const string baseUrl = "http://clickdimensions.com/";
         CdHomePage homePage;
 
+        private Dictionary<string, string> PartnerPageUrls = new Dictionary<string, string>()
+        {
+            {"C-ven Technologies","c-ven.com" }
+        };
+
         [SetUp]
         public void Initiate()
         {
@@ -30,16 +36,15 @@ namespace Exam2CD.Tests
         public void ClickDimensions_CentralAmerica()
         {
             string partner = "C-ven Technologies";
-            string region = "Central America & Caribbean";
+            Regions region = Regions.central_america_caribbean;
 
-            CdTechnologyPage technologyPage = homePage
-                .headerSection
-                .GoToOurTechnologyPage();
+            CdTechnologyPage technologyPage = homePage.headerSection.GoToOurTechnologyPage();
             CdFindPartnerPage findPartnerPage = technologyPage.GoToFindPartner();
             findPartnerPage.GoToRegion(region);
-            Assert.IsTrue(findPartnerPage.PartnerExists(partner), "Partner " + partner + " doesn't exist for region " + region);
-            findPartnerPage.ClickOnPartnerLink(partner);
-            Assert.IsTrue(SeleniumHelper.ValidatePageExists(PartnerPageTitles[partner]), "Cannot redirect to partner " + partner);
+            PartnerSection partnerSection = findPartnerPage.GetPartnerSectionByPartnerName(partner);
+            Assert.IsTrue(partnerSection != null, "Partner " + partner + " doesn't exist for region " + region.ToString());
+            partnerSection.ClickOnPartnerLink();
+            Assert.IsTrue(SeleniumHelper.ValidatePageExists(driver, PartnerPageUrls[partner]), "Cannot redirect to partner " + partner);
         }
 
         [Test]
