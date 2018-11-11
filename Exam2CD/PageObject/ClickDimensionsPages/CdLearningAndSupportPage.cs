@@ -8,15 +8,15 @@ namespace Exam2CD.PageObject.ClickDimensionsPages
     {
         private static By CERTIFICATION = By.XPath("//a[span/text()='ClickDimensions Certification']");
 
-        public CdLearningAndSupportPage(IWebDriver driver) : base(driver)
+        public CdLearningAndSupportPage(WebDriverFacade driver) : base(driver)
         {
         }
 
         internal CdCertificationPage ClickOnCertification()
         {
-            wait.Until(ExpectedConditions.ElementExists(CERTIFICATION));
+            driver.GetWait().Until(ExpectedConditions.ElementExists(CERTIFICATION));
             IWebElement clickElement = driver.FindElement(CERTIFICATION);
-            SeleniumHelper.ClickElementWithJS(driver, clickElement);
+            driver.ClickElementWithJS(clickElement);
             return new CdCertificationPage(driver);
         }
     }

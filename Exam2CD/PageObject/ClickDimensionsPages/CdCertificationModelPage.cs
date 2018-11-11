@@ -1,10 +1,11 @@
-﻿using OpenQA.Selenium;
+﻿using Exam2CD.Helpers;
+using OpenQA.Selenium;
 
 namespace Exam2CD.PageObject.ClickDimensionsPages
 {
     internal class CdCertificationModelPage : BasePage
     {
-        public CdCertificationModelPage(IWebDriver driver) : base(driver)
+        public CdCertificationModelPage(WebDriverFacade driver) : base(driver)
         {
         }
 

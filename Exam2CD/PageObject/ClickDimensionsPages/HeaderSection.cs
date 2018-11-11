@@ -1,11 +1,12 @@
 ﻿using Exam2CD.Enums;
+using Exam2CD.Helpers;
 using OpenQA.Selenium;
 
 namespace Exam2CD.PageObject.ClickDimensionsPages
 {
     public class HeaderSection : BasePage
     {
-        public HeaderSection(IWebDriver driver) : base(driver)
+        public HeaderSection(WebDriverFacade driver) : base(driver)
         {
         }
 

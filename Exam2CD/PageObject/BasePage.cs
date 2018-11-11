@@ -7,14 +7,12 @@ namespace Exam2CD.PageObject
 {
     public class BasePage
     {
-        protected IWebDriver driver;
-        protected WebDriverWait wait;
+        protected WebDriverFacade driver;
 
-        public BasePage(IWebDriver driver)
+        public BasePage(WebDriverFacade driver)
         {
             this.driver = driver;
-            wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(30));
-            SeleniumHelper.WaitForPageLoaded(this.driver);
+            driver.WaitForPageLoaded();
         }
     }
 }

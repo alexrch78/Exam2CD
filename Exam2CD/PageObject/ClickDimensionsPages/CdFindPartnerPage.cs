@@ -11,7 +11,7 @@ namespace Exam2CD.PageObject.ClickDimensionsPages
     {
         private static By PARTNER = By.ClassName("fusion-column-wrapper");
 
-        public CdFindPartnerPage(IWebDriver driver) : base(driver)
+        public CdFindPartnerPage(WebDriverFacade driver) : base(driver)
         {
         }
 
@@ -19,8 +19,8 @@ namespace Exam2CD.PageObject.ClickDimensionsPages
         {
             string regionName = region.ToString().Replace("_", "-");
             string selector = string.Format("a[data-filter='.{0}']", regionName);
-            wait.Until(ExpectedConditions.ElementExists(By.CssSelector(selector)));
-            SeleniumHelper.ClickElementWithJS(driver, driver.FindElement(By.CssSelector(selector)));
+            driver.GetWait().Until(ExpectedConditions.ElementExists(By.CssSelector(selector)));
+            driver.ClickElementWithJS(driver.FindElement(By.CssSelector(selector)));
         }
 
         internal PartnerSection GetPartnerSectionByPartnerName(string partnerName)

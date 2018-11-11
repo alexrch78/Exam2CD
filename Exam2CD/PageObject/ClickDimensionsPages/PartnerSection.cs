@@ -9,9 +9,9 @@ namespace Exam2CD.PageObject.ClickDimensionsPages
     public class PartnerSection
     {
         private IWebElement rootElement;
-        private IWebDriver driver;
+        private WebDriverFacade driver;
 
-        public PartnerSection(IWebDriver driver, IWebElement rootElement)
+        public PartnerSection(WebDriverFacade driver, IWebElement rootElement)
         {
             this.driver = driver;
             this.rootElement = rootElement;
@@ -20,8 +20,8 @@ namespace Exam2CD.PageObject.ClickDimensionsPages
         internal void ClickOnPartnerLink()
         {
             IWebElement clickElement = rootElement.FindElements(By.TagName("a")).Where(el => !el.GetAttribute("href").Contains("clickdimensions")).First();
-            SeleniumHelper.ClickElementWithJS(driver, clickElement);
-            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(d => d.WindowHandles.Count == 2);
+            driver.ClickElementWithJS(clickElement);
+            driver.GetWait().Until(d => d.WindowHandles.Count == 2);
         }
     }
 }

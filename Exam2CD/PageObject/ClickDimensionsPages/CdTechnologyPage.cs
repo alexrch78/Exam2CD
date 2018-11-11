@@ -8,14 +8,14 @@ namespace Exam2CD.PageObject.ClickDimensionsPages
     {
         private static By FIND_PARTNER = By.XPath("//a[span/text()='Explore our regional partner directory to find a partner in your area']");
 
-        public CdTechnologyPage(IWebDriver driver) : base(driver)
+        public CdTechnologyPage(WebDriverFacade driver) : base(driver)
         {
         }
 
         public CdFindPartnerPage GoToFindPartner()
         {
-            wait.Until(ExpectedConditions.ElementExists(FIND_PARTNER));
-            SeleniumHelper.ClickElementWithJS(driver, driver.FindElement(FIND_PARTNER));
+            driver.GetWait().Until(ExpectedConditions.ElementExists(FIND_PARTNER));
+            driver.ClickElementWithJS(driver.FindElement(FIND_PARTNER));
             return new CdFindPartnerPage(driver);
         }
     }

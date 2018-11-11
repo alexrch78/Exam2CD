@@ -60,10 +60,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\Browsers.cs" />
     <Compile Include="Enums\Categories.cs" />
     <Compile Include="Enums\Pages.cs" />
     <Compile Include="Enums\Regions.cs" />
-    <Compile Include="Helpers\SeleniumHelper.cs" />
+    <Compile Include="Helpers\WebDriverFacade.cs" />
+    <Compile Include="Helpers\WebDriverFactory.cs" />
     <Compile Include="PageObject\BasePage.cs" />
     <Compile Include="PageObject\ClickDimensionsPages\CdHomePage.cs" />
     <Compile Include="PageObject\ClickDimensionsPages\CdCertificationModelPage.cs" />

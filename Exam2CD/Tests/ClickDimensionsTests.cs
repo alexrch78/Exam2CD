@@ -11,7 +11,7 @@ namespace Exam2CD.Tests
     [TestFixture]
     public class ClickDimensionsTests
     {
-        private IWebDriver driver;
+        private WebDriverFacade driver;
         private const string baseUrl = "http://clickdimensions.com/";
         private CdHomePage homePage;
 
@@ -23,9 +23,10 @@ namespace Exam2CD.Tests
         [SetUp]
         public void Initiate()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(baseUrl);
+            Browsers browser = Browsers.Chrome;
+            driver = new WebDriverFacade(browser);
+            driver.MaximizeWindow();
+            driver.GoToURL(baseUrl);
             homePage = new CdHomePage(driver);
         }
 
@@ -55,7 +56,7 @@ namespace Exam2CD.Tests
             PartnerSection partnerSection = findPartnerPage.GetPartnerSectionByPartnerName(partner);
             Assert.IsTrue(partnerSection != null, "Partner " + partner + " doesn't exist for region " + region.ToString());
             partnerSection.ClickOnPartnerLink();
-            Assert.IsTrue(SeleniumHelper.ValidatePageExists(driver, PartnerPageUrls[partner]), "Cannot redirect to partner " + partner);
+            Assert.IsTrue(driver.ValidatePageExists(PartnerPageUrls[partner]), "Cannot redirect to partner " + partner);
         }
 
         [TearDown]
