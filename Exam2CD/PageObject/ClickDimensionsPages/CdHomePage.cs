@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace Exam2CD.PageObject.ClickDimensionsPages
 {
-    class CdHomePage : BasePage
+    internal class CdHomePage : BasePage
     {
         public CdHomePage(IWebDriver driver) : base(driver)
         {

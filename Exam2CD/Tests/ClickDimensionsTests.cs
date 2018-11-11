@@ -4,11 +4,7 @@ using Exam2CD.PageObject.ClickDimensionsPages;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exam2CD.Tests
 {
@@ -17,7 +13,7 @@ namespace Exam2CD.Tests
     {
         private IWebDriver driver;
         private const string baseUrl = "http://clickdimensions.com/";
-        CdHomePage homePage;
+        private CdHomePage homePage;
 
         private Dictionary<string, string> PartnerPageUrls = new Dictionary<string, string>()
         {
@@ -28,6 +24,7 @@ namespace Exam2CD.Tests
         public void Initiate()
         {
             driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(baseUrl);
             homePage = new CdHomePage(driver);
         }
@@ -64,7 +61,7 @@ namespace Exam2CD.Tests
         [TearDown]
         public void CleanUp()
         {
-            driver.Close();
+            driver.Quit();
         }
     }
 }
