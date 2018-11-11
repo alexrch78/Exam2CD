@@ -30,5 +30,12 @@ namespace Exam2CD.PageObject.ClickDimensionsPages
             string xpath = string.Format("//a[span/text()='{0}']", category.ToString());
             driver.FindElement(By.XPath(xpath)).Click();
         }
+
+        internal CdLearningAndSupportPage GotoLearningAndSupportPage()
+        {
+            GoToCategory(Categories.Resources);
+            GoToPage(Pages.Learning_and_Support);
+            return new CdLearningAndSupportPage(driver);
+        }
     }
 }

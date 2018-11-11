@@ -33,6 +33,20 @@ namespace Exam2CD.Tests
         }
 
         [Test]
+        public void ClickDimensions_Academy()
+        {
+            List<string> certificationsLevels = new List<string>() { "Fundamentals", "Advanced", "Admin" };
+
+            CdLearningAndSupportPage learningSupportPage = homePage.headerSection.GotoLearningAndSupportPage();
+            CdCertificationPage certificationPage = learningSupportPage.ClickOnCertification();
+            CdCertificationModelPage certificationModelPage = certificationPage.ClickReadMoreOnCertification();
+            foreach (string certificationsLevel in certificationsLevels)
+            {
+                Assert.IsTrue(certificationModelPage.CertificationLevelExists(certificationsLevel), "Level " + certificationsLevel + " doesn't exist");
+            }
+        }
+
+        [Test]
         public void ClickDimensions_CentralAmerica()
         {
             string partner = "C-ven Technologies";
@@ -45,20 +59,6 @@ namespace Exam2CD.Tests
             Assert.IsTrue(partnerSection != null, "Partner " + partner + " doesn't exist for region " + region.ToString());
             partnerSection.ClickOnPartnerLink();
             Assert.IsTrue(SeleniumHelper.ValidatePageExists(driver, PartnerPageUrls[partner]), "Cannot redirect to partner " + partner);
-        }
-
-        [Test]
-        public void ClickDimensions_Academy()
-        {
-            List<string> certificationsLevels = new List<string>() { "Fundamentals", "Advanced", "Admin" };
-
-            CdLearningAndSupportPage learningSupportPage = homePage.headerSection.GotoLearningAndSupportPage();
-            CdCertificationPage certificationPage = learningSupportPage.ClickOnCertification();
-            CdCertificationModelPage certificationModelPage = certificationPage.ClickReadMoreOnCertification();
-            foreach (string certificationsLevel in certificationsLevels)
-            {
-                Assert.IsTrue(certificationModelPage.SertificationLevelExists(certificationsLevel), "Level " + certificationsLevel + " doesn't exist");
-            }
         }
 
         [TearDown]

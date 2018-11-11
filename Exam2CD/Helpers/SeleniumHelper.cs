@@ -19,22 +19,27 @@ namespace Exam2CD.Helpers
         {
             try
             {
-                new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(d =>
-                {
-                    foreach (string handle in driver.WindowHandles)
-                    {
-                        driver.SwitchTo().Window(handle);
-                        if (driver.Url.Contains(url))
-                            return true;
-                    }
-                    return false;
-                });
+                SwithTabByUrl(driver, url);
                 return true;
             }
             catch
             {
                 return false;
             }
+        }
+
+        internal static void SwithTabByUrl(IWebDriver driver, string url)
+        {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(d =>
+            {
+                foreach (string handle in driver.WindowHandles)
+                {
+                    driver.SwitchTo().Window(handle);
+                    if (driver.Url.Contains(url))
+                        return true;
+                }
+                return false;
+            });
         }
     }
 }

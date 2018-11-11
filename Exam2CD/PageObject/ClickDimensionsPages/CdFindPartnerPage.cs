@@ -10,7 +10,7 @@ namespace Exam2CD.PageObject.ClickDimensionsPages
 {
     class CdFindPartnerPage : BasePage
     {
-        private static By PARTNER = By.ClassName("fusion-column-wrapper);
+        private static By PARTNER = By.ClassName("fusion-column-wrapper");
 
         public CdFindPartnerPage(IWebDriver driver) : base(driver) { }
 
